@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="myBlog@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="myBlog">
+      <ObjectId>16384</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12376</ObjectId>
+    </database>
+    <role id="4" parent="1" name="myBlog">
+      <ObjectId>16385</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="5" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="6" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-04-30.01:25:47.587</IntrospectionTimestamp>
+      <IntrospectionStateNumber>623</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="7" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="information_schema">
+      <ObjectId>12084</ObjectId>
+    </schema>
+    <table id="12" parent="6" name="blogs">
+      <ObjectId>16393</ObjectId>
+      <StateNumber>623</StateNumber>
+    </table>
+    <table id="13" parent="6" name="categories">
+      <ObjectId>16386</ObjectId>
+      <StateNumber>623</StateNumber>
+    </table>
+    <column id="14" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="15" parent="12" name="title">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="16" parent="12" name="content">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="17" parent="12" name="category">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>623</StateNumber>
+    </column>
+    <index id="18" parent="12" name="blogs_pkey">
+      <ObjectId>16399</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="12" name="blogs_pkey">
+      <ObjectId>16400</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>blogs_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="12" name="blogs_category_fkey">
+      <ObjectId>16401</ObjectId>
+      <ColNames>category</ColNames>
+      <RefTableId>16386</RefTableId>
+      <RefColPositions>2</RefColPositions>
+      <RefTableName>categories</RefTableName>
+      <RefKeyName>categories_category_key</RefKeyName>
+      <RefColNames>category</RefColNames>
+    </foreign-key>
+    <column id="21" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>621</StateNumber>
+    </column>
+    <column id="22" parent="13" name="category">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>621</StateNumber>
+    </column>
+    <index id="23" parent="13" name="categories_pkey">
+      <ObjectId>16389</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="24" parent="13" name="categories_category_key">
+      <ObjectId>16391</ObjectId>
+      <ColNames>category</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="13" name="categories_pkey">
+      <ObjectId>16390</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>categories_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="26" parent="13" name="categories_category_key">
+      <ObjectId>16392</ObjectId>
+      <ColNames>category</ColNames>
+      <UnderlyingIndexName>categories_category_key</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

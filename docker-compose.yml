@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+    postgres:
+        container_name: "postgres_container"
+        image: onjin/alpine-postgres:9.5
+        restart: unless-stopped
+        ports:
+            - "5442:5432"
+        volumes:
+            - ./docker/Database/a_category.sql:/docker-entrypoint-initdb.d/a_category.sql
+            - ./docker/Database/b_blog.sql:/docker-entrypoint-initdb.d/b_blog.sql
+        environment:
+            LC_ALL: C.UTF-8
+            POSTGRES_USER: myBlog
+            POSTGRES_PASSWORD: myBlog
+            POSTGRES_DB: myBlog
+
+    app:
+        container_name: "python_app"
+        build:
+          context: ./
+          dockerfile: ./docker/python/Dockerfile
+        environment:
+            DEBUG: 'true'
+            PORT: '8888'
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - postgres
+        links:
+            - postgres
+        ports:
+            - "8080:80"
+        expose:
+            - "80"
+        command: ["./wait_for_it.sh", "postgres:5432", "--", "python", "recipe_server.py"]
